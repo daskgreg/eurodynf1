@@ -4,7 +4,7 @@
 
 ##Project Name: Formula 1
 
-##Made by: Gregory Dasakalakis
+##Made by: Gregory Daskaalakis
 
 ##Guide
 
