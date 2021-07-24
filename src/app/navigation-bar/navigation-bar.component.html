@@ -1,0 +1,48 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    [ngClass]="{hidden: !(isHandset$ | async) === false}"
+    fixedInViewport="false"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">WINNERS</a>
+      <a mat-list-item href="#">RESULTS</a>
+      <a mat-list-item href="#">CONTACT</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>
+        <img src="assets/logos/f1_white_logo.png" width="100" height="30" style="float:left;" alt="">
+      </span>
+      <span class="spacing"></span>
+      <a style="cursor:pointer;"  (click)="winners()">WINNERS</a>
+      <a style="cursor:pointer;" (click)="results()">RESULTS</a>
+      <a style="cursor:pointer;" (click)="contact()">CONTACT</a>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<app-results *ngIf="showResultsComp == true" style="    position: absolute;
+top: 89px;
+z-index: 9999;
+width: 100%;"></app-results>
+
+<app-winners *ngIf="showWinnersComp == true" style="position:absolute;top: 149px;
+z-index: 9999;
+width: 100%;"></app-winners>

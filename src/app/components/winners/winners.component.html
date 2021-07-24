@@ -1,0 +1,144 @@
+
+<div style="text-align:center;" class="row">
+    <div class=col-md-4>
+       
+    </div>
+    <div class=col-md-4>
+        <button class="button-styling">
+            <select class="selection stylingSelect" #year (change)="update($event)" >
+                <option value="default">{{selectedYear}}</option>
+                <option *ngFor="let years of everyFormulaYearAr()" [value]="years" size="5">
+                    {{years}}
+                </option>
+            </select>
+        </button>
+    </div>
+    <div class=col-md-4>
+       
+    </div>
+    </div>
+    <div *ngIf="selectedYear" class="center">
+        <p class='stylingFormula'>{{selectedYear}}   FORMULA</p>
+    </div>
+    <div *ngIf="selectedYear != 2021">
+        <div class="row">
+            <div *ngFor="let driverInfo of standingsLists; let i=index" class="col-md-4">
+                <!-- Widget: user widget style 1 -->
+                <div *ngIf="i<3" class="card card-widget widget-user" >
+                  <!-- Add the bg color to the header using any of the bg-* classes -->
+                  <div class="widget-user-header bg-info">
+                  </div>
+                  <div class="widget-user-image">
+                    <img class="img-circle elevation-2" src="assets/images/drivers/alonso.jpeg" alt="User Avatar">
+                  </div>
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                          <h5 class="description-header">#{{driverInfo.position}}</h5>
+                          <span class="description-text">{{driverInfo.Driver.familyName}}</span>
+                        </div>
+                        <!-- /.description-block -->
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                          <h5 class="description-header"></h5>
+                          <span class="description-text"></span>
+                        </div>
+                        <!-- /.description-block -->
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-sm-4">
+                        <div class="description-block">
+                          <h5 class="description-header">{{driverInfo.Driver.nationality}}</h5>
+                          <span class="description-text">{{driverInfo.Driver.dateOfBirth}}</span>
+                        </div>
+                        <!-- /.description-block -->
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                  </div>
+                </div>
+              </div>
+        </div>
+        
+        <table  style="margin-top: 2%;text-align:center;" class="table table-striped">
+            <tr>
+                <th scope="col">position</th>
+                <th scope="col">Points</th>
+                <th scope="col">Driver Name </th>
+                <th scope="col">Constructor Name </th>
+              </tr>
+              <tr *ngFor="let driverInfo of standingsLists; let i=index">
+                <th *ngIf="i>2"scope="row">{{driverInfo.position}}</th>
+                <td *ngIf="i>2">{{driverInfo.points}}</td>
+                <td  *ngIf="i>2">{{driverInfo.Driver.familyName}}</td>
+                <td *ngIf="i>2">{{driverInfo.Constructors[0].name}}</td>
+        
+               
+        </table>
+    </div>
+<div *ngIf="selectedYear == 2021">
+    <div class="row">
+        <div *ngFor="let driverInfo of standingsLists; let i=index" class="col-md-4">
+            <!-- Widget: user widget style 1 -->
+            <div *ngIf="i<3" class="card card-widget widget-user" >
+              <!-- Add the bg color to the header using any of the bg-* classes -->
+              <div class="widget-user-header ">
+                <img src="assets/images/constructor/{{driverInfo.Constructors[0].constructorId}}.png" >
+              </div>
+              <div class="widget-user-image">
+                <img class="img-circle elevation-2" src="assets/images/drivers/{{driverInfo.Driver.driverId}}.jpeg" alt="User Avatar">
+              </div>
+              <div class="card-footer">
+                <div class="row">
+                  <div class="col-sm-4 border-right">
+                    <div class="description-block">
+                      <h5 class="description-header">#{{driverInfo.position}}</h5>
+                      <span class="description-text">{{driverInfo.Driver.familyName}}</span>
+                    </div>
+                    <!-- /.description-block -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-4 border-right">
+                    <div class="description-block">
+                      <h5 class="description-header"></h5>
+                      <span class="description-text"></span>
+                    </div>
+                    <!-- /.description-block -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-4">
+                    <div class="description-block">
+                      <h5 class="description-header">{{driverInfo.Driver.nationality}}</h5>
+                      <span class="description-text">{{driverInfo.Driver.dateOfBirth}}</span>
+                    </div>
+                    <!-- /.description-block -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+              </div>
+            </div>
+          </div>
+    </div>
+    
+    <table  style="margin-top: 2%;text-align:center;" class="table table-striped">
+        <tr>
+            <th scope="col">position</th>
+            <th scope="col">Points</th>
+            <th scope="col">Driver Name </th>
+            <th scope="col">Constructor Name </th>
+          </tr>
+          <tr *ngFor="let driverInfo of standingsLists; let i=index" (mouseover)="showMoreDetails[i]=true" (mouseout)="showMoreDetails[i]=false">
+            
+            <th *ngIf="i>2"scope="row">{{driverInfo.position}}</th>
+            <td *ngIf="i>2">{{driverInfo.points}}</td>
+            <td  *ngIf="i>2">{{driverInfo.Driver.familyName}}</td>
+            <td *ngIf="i>2">{{driverInfo.Constructors[0].name}}</td>
+    
+           
+    </table>
+</div>
