@@ -85,6 +85,7 @@ export class ResultsComponent implements OnInit {
   grandPrixInfo: any;
   buttonsCircuit: boolean = true;
 
+  circuitInfo: any;
   buttonSearchRace(e) {
     if (e) {
       this.pista = e.target.value;
@@ -98,14 +99,15 @@ export class ResultsComponent implements OnInit {
 
     for (const rn of this.raceTable) {
       if (rn.raceName == this.pista) {
-        console.log(rn.Results);
-        this.grandPrixInfo = rn.Results;
         
+        this.grandPrixInfo = rn.Results;
+
       }
     }
 
   }
-
+  circuitData: any;
+  circuitDataTime: any;
   searchRace(e) {
     if (e) {
       this.pista = e.target.value;
@@ -119,7 +121,10 @@ export class ResultsComponent implements OnInit {
 
     for (const rn of this.raceTable) {
       if (rn.raceName == this.pista) {
-        console.log(rn.Results);
+        this.circuitData = rn;
+        this.circuitDataTime = rn.time.slice(0, -1);
+        this.circuitInfo = rn.Circuit;
+   
         this.grandPrixInfo = rn.Results;
       }
     }
