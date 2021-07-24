@@ -41,7 +41,7 @@ export class ResultsComponent implements OnInit {
     } else {
       this.selectedYear = 2021;
     }
-
+    console.log(this.selectedYear);
     this.http
       .get(
         'http://ergast.com/api/f1/' +
@@ -81,20 +81,7 @@ export class ResultsComponent implements OnInit {
   buttonsCircuit: boolean = true;
 
   circuitInfo: any;
-  buttonSearchRace(e) {
-    if (e) {
-      this.pista = e.target.value;
-    } else {
-      this.pista = 'Bahrain Grand Prix';
-      this.buttonsCircuit = false;
-    }
-
-    for (const rn of this.raceTable) {
-      if (rn.raceName == this.pista) {
-        this.grandPrixInfo = rn.Results;
-      }
-    }
-  }
+  
   circuitData: any;
   circuitDataTime: any;
   searchRace(e) {
@@ -109,10 +96,10 @@ export class ResultsComponent implements OnInit {
 
     for (const rn of this.raceTable) {
       if (rn.raceName == this.pista) {
+        console.log(rn);
         this.circuitData = rn;
-        this.circuitDataTime = rn.time.slice(0, -1);
+        this.circuitDataTime = '13:00'
         this.circuitInfo = rn.Circuit;
-
         this.grandPrixInfo = rn.Results;
       }
     }
