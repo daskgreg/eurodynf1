@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NavbarComponent } from './componenets/navbar/navbar.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ResultsComponent } from './components/results/results.component';
 import { WinnersComponent } from './components/winners/winners.component';
@@ -23,12 +22,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
-    NavbarComponent,
     ResultsComponent,
     WinnersComponent,
     ContactComponent,
@@ -38,7 +36,8 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,BrowserAnimationsModule,
+    NgbModule,BrowserAnimationsModule,MDBBootstrapModule,FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,MatSliderModule,MatToolbarModule,MatIconModule, MatGridListModule, MatCardModule, MatMenuModule, MatButtonModule, LayoutModule, MatSidenavModule, MatListModule
   ],
   providers: [],

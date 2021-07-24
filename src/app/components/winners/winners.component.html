@@ -23,10 +23,9 @@
     <div *ngIf="selectedYear != 2021">
         <div class="row">
             <div *ngFor="let driverInfo of standingsLists; let i=index" class="col-md-4">
-                <!-- Widget: user widget style 1 -->
                 <div *ngIf="i<3" class="card card-widget widget-user" >
-                  <!-- Add the bg color to the header using any of the bg-* classes -->
                   <div class="widget-user-header bg-info">
+                    <h5 class="description-header">{{driverInfo.Constructors[0].name}}</h5>
                   </div>
                   <div class="widget-user-image">
                     <img class="img-circle elevation-2" src="assets/images/drivers/alonso.jpeg" alt="User Avatar">
@@ -38,27 +37,21 @@
                           <h5 class="description-header">#{{driverInfo.position}}</h5>
                           <span class="description-text">{{driverInfo.Driver.familyName}}</span>
                         </div>
-                        <!-- /.description-block -->
                       </div>
-                      <!-- /.col -->
                       <div class="col-sm-4 border-right">
                         <div class="description-block">
                           <h5 class="description-header"></h5>
-                          <span class="description-text"></span>
+                          <span class="description-text" style="position: relative;
+                          top: 23px;">Points:{{driverInfo.points}}</span>
                         </div>
-                        <!-- /.description-block -->
                       </div>
-                      <!-- /.col -->
                       <div class="col-sm-4">
                         <div class="description-block">
                           <h5 class="description-header">{{driverInfo.Driver.nationality}}</h5>
                           <span class="description-text">{{driverInfo.Driver.dateOfBirth}}</span>
                         </div>
-                        <!-- /.description-block -->
                       </div>
-                      <!-- /.col -->
                     </div>
-                    <!-- /.row -->
                   </div>
                 </div>
               </div>
@@ -83,9 +76,7 @@
 <div *ngIf="selectedYear == 2021">
     <div class="row">
         <div *ngFor="let driverInfo of standingsLists; let i=index" class="col-md-4">
-            <!-- Widget: user widget style 1 -->
             <div *ngIf="i<3" class="card card-widget widget-user" >
-              <!-- Add the bg color to the header using any of the bg-* classes -->
               <div class="widget-user-header ">
                 <img src="assets/images/constructor/{{driverInfo.Constructors[0].constructorId}}.png" >
               </div>
@@ -99,27 +90,21 @@
                       <h5 class="description-header">#{{driverInfo.position}}</h5>
                       <span class="description-text">{{driverInfo.Driver.familyName}}</span>
                     </div>
-                    <!-- /.description-block -->
                   </div>
-                  <!-- /.col -->
                   <div class="col-sm-4 border-right">
                     <div class="description-block">
                       <h5 class="description-header"></h5>
-                      <span class="description-text"></span>
+                      <span class="description-text" style="position: relative;
+                      top: 23px;">Points:{{driverInfo.points}}</span>
                     </div>
-                    <!-- /.description-block -->
                   </div>
-                  <!-- /.col -->
                   <div class="col-sm-4">
                     <div class="description-block">
                       <h5 class="description-header">{{driverInfo.Driver.nationality}}</h5>
                       <span class="description-text">{{driverInfo.Driver.dateOfBirth}}</span>
                     </div>
-                    <!-- /.description-block -->
                   </div>
-                  <!-- /.col -->
                 </div>
-                <!-- /.row -->
               </div>
             </div>
           </div>

@@ -1,1 +1,29 @@
-<p>contact works!</p>
+<form class="text-center border border-light p-5" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+    <p class="h4 mb-4">Contact us</p>
+  
+    <input type="text" formControlName="contactFormName" id="defaultContactFormName" mdbInput
+      class="form-control mb-4" placeholder="Name">
+  
+    <input type="email" formControlName="contactFormEmail" id="defaultContactFormEmail" mdbInput
+      class="form-control mb-4" placeholder="E-mail">
+  
+    <label>Select Driver</label>
+    <select formControlName="contactFormSubjects" class="browser-default custom-select mb-4">
+      <option value="default" >Choose a Driver</option>
+      <option *ngFor="let driver of standingsLists; let i = index;" value="{{driver.Driver.familyName}}">{{driver.Driver.familyName}}</option>
+
+    </select>
+    <label>Subject</label>
+  
+    <div class="form-group">
+      <textarea formControlName="contactFormMessage" class="form-control rounded-0" mdbInput id="exampleFormControlTextarea2"
+        rows="3" placeholder="Message"></textarea>
+    </div>
+  
+    <mdb-checkbox [default]="true" class="mb-4">Send me a copy of this message</mdb-checkbox>
+  
+    <button mdbBtn color="info" outline="true" block="true" class="z-depth-0 my-4 waves-effect"
+      mdbWavesEffect type="submit"(click)="onSubmit()">Send</button>
+  
+  </form>

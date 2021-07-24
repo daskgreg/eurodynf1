@@ -1,46 +1,45 @@
-
 <div *ngIf="selectedYear" class="center">
-  <p class='stylingFormula'>{{selectedYear}}   FORMULA</p>
+  <p class='stylingFormula'>{{selectedYear}} FORMULA</p>
 </div>
 
 <div style="text-align:center;" class="row">
-    <div class=col-md-4>
-        <button class="button-styling">
-            <select class="selection stylingSelect" #year (change)="update($event)" >
-                <option value="default">{{selectedYear}}</option>
-                <option *ngFor="let years of everyFormulaYearAr()" [value]="years" size="5">
-                    {{years}}
-                </option>
-            </select>
-        </button>
-    </div>
-    <div class=col-md-4>
-        <button class="button-styling">
-            <select class="selection stylingSelect" #race (change)="searchRace($event)" >
-                <option value="default">{{pista}}</option>
-                <option *ngFor="let race of raceTable" [value]="race.raceName" size="5">
-                    {{race.raceName}}
-                </option>
-            </select>
-        </button>
-    </div>
-    <div class=col-md-4>
-        <button class="button-styling">
-            <select  [value]="" class="selection stylingSelect" #drivername (change)="driverNameFunction($event)" >
-              <option value="default">{{driversName}}</option>
-                <option *ngFor="let driver of grandPrixInfo" [value]="driver.Driver.driverId" size="5">
-                    {{driver.Driver.driverId}}
-                </option>
-          
-           
-           
-            </select>
-        </button>
-    </div>
+  <div class=col-md-4>
+    <button class="button-styling">
+      <select class="selection stylingSelect" #year (change)="update($event)">
+        <option value="default">{{selectedYear}}</option>
+        <option *ngFor="let years of everyFormulaYearAr()" [value]="years" size="5">
+          {{years}}
+        </option>
+      </select>
+    </button>
+  </div>
+  <div class=col-md-4>
+    <button class="button-styling">
+      <select class="selection stylingSelect" #race (change)="searchRace($event)">
+        <option value="default">{{pista}}</option>
+        <option *ngFor="let race of raceTable" [value]="race.raceName" size="5">
+          {{race.raceName}}
+        </option>
+      </select>
+    </button>
+  </div>
+  <div class=col-md-4>
+    <button class="button-styling">
+      <select [value]="" class="selection stylingSelect" #drivername (change)="driverNameFunction($event)">
+        <option value="default">{{driversName}}</option>
+        <option *ngFor="let driver of grandPrixInfo" [value]="driver.Driver.driverId" size="5">
+          {{driver.Driver.driverId}}
+        </option>
+
+
+
+      </select>
+    </button>
+  </div>
 </div>
 
 <div style="margin-top:3%;" *ngIf="raceTable" class="container-fluid">
- 
+
   <div class="row">
     <div class="col-md-3 col-sm-6 col-12">
       <div class="info-box">
@@ -50,11 +49,8 @@
           <span class="info-box-text">Circuit Name</span>
           <span class="info-box-number">{{circuitInfo.circuitName}}</span>
         </div>
-        <!-- /.info-box-content -->
       </div>
-      <!-- /.info-box -->
     </div>
-    <!-- /.col -->
     <div class="col-md-3 col-sm-6 col-12">
       <div class="info-box">
         <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
@@ -63,11 +59,8 @@
           <span class="info-box-text">Country</span>
           <span class="info-box-number">{{circuitInfo.Location.country}}</span>
         </div>
-        <!-- /.info-box-content -->
       </div>
-      <!-- /.info-box -->
     </div>
-    <!-- /.col -->
     <div class="col-md-3 col-sm-6 col-12">
       <div class="info-box">
         <span class="info-box-icon bg-warning"><i class="far fa-copy"></i></span>
@@ -76,11 +69,8 @@
           <span class="info-box-text">City</span>
           <span class="info-box-number">{{circuitInfo.Location.locality}}</span>
         </div>
-        <!-- /.info-box-content -->
       </div>
-      <!-- /.info-box -->
     </div>
-    <!-- /.col -->
     <div class="col-md-3 col-sm-6 col-12">
       <div class="info-box">
         <span class="info-box-icon bg-danger"><i class="fas fa-hourglass-start"></i></span>
@@ -89,23 +79,21 @@
           <span class="info-box-text">{{circuitData.date}}</span>
           <span class="info-box-number">{{circuitDataTime}}</span>
         </div>
-        <!-- /.info-box-content -->
       </div>
-      <!-- /.info-box -->
     </div>
-    <!-- /.col -->
   </div>
-  <!-- /.row -->
 
 
 
-<div *ngIf="buttonsCircuit == true" style="text-align:center;" class="row">
+  <div *ngIf="buttonsCircuit == true" style="text-align:center;" class="row">
     <div *ngFor="let race of raceTable" class="col-md-4">
-            <button class='button-styling-circuit' [value]="race.raceName" (click)="buttonSearchRace($event)">{{race.raceName}}</button>
+      <button class='button-styling-circuit' [value]="race.raceName"
+        (click)="buttonSearchRace($event)">{{race.raceName}}</button>
     </div>
-</div>
+  </div>
 
-<table  style="margin-top: 2%;text-align:center;font-family:formula" *ngIf="pista && selectedYear!=2021 && tableCircuit == true" class="table table-striped">
+  <table style="margin-top: 2%;text-align:center;font-family:formula"
+    *ngIf="pista && selectedYear!=2021 && tableCircuit == true" class="table table-striped">
     <thead>
       <tr>
         <th scope="col">Position</th>
@@ -114,7 +102,7 @@
         <th scope="col">Constructor Name</th>
       </tr>
     </thead>
-    <tbody  >
+    <tbody>
       <tr *ngFor="let gp of grandPrixInfo">
         <th scope="row">{{gp.position}}</th>
         <td>{{gp.points}}</td>
@@ -125,7 +113,8 @@
       </tr>
     </tbody>
   </table>
-  <table style="margin-top: 2%;text-align:center;" *ngIf="pista && selectedYear==2021 && tableCircuit == true" class="table table-striped ">
+  <table style="margin-top: 2%;text-align:center;" *ngIf="pista && selectedYear==2021 && tableCircuit == true"
+    class="table table-striped ">
     <thead>
       <tr>
         <th scope="col">Position</th>
@@ -136,34 +125,38 @@
         <th scope="col"></th>
       </tr>
     </thead>
-    <tbody  >
-      <tr style="vertical-align: center !important;"*ngFor="let gp of grandPrixInfo">
+    <tbody>
+      <tr style="vertical-align: center !important;" *ngFor="let gp of grandPrixInfo">
         <th scope="row">{{gp.position}}</th>
         <td>{{gp.points}}</td>
         <td style="vertical-align: center !important;">{{gp.Driver.familyName}}</td>
-        <td >
-            <img src="assets/images/drivers/{{gp.Driver.driverId}}.jpeg" width="100" height="100" class="d-inline-block align-top" alt="">
+        <td>
+          <img src="assets/images/drivers/{{gp.Driver.driverId}}.jpeg" width="100" height="100"
+            class="d-inline-block align-top" alt="">
         </td>
         <td>{{gp.Constructor.name}}</td>
         <td>
-            <img src="assets/images/constructor/{{gp.Constructor.constructorId}}.png" width="300" height="100" class="d-inline-block align-top" alt="">
+          <img src="assets/images/constructor/{{gp.Constructor.constructorId}}.png" width="300" height="100"
+            class="d-inline-block align-top" alt="">
         </td>
       </tr>
     </tbody>
   </table>
   <div *ngIf="driverInformatione">
-    <div style="text-align:center;"  class="row">
+    <div style="text-align:center;" class="row">
       <div class="col-md-6">
         <img style="width: 537px;
         height: 335px;
         left: 6%;
         position: relative;
-        border-radius: 20px;" src="assets/images/drivers/{{driverCircuitInfo.Driver.driverId}}.jpeg"  alt="{{driverCircuitInfo.Driver.driverId}}">
+        border-radius: 20px;" src="assets/images/drivers/{{driverCircuitInfo.Driver.driverId}}.jpeg"
+          alt="{{driverCircuitInfo.Driver.driverId}}">
       </div>
       <div class="col-md-6">
-        <div style="text-align:center;"  class="row">
+        <div style="text-align:center;" class="row">
           <div col-md-6>
-          <img src="assets/images/constructor/{{driverCircuitInfo.Constructor.constructorId}}.png" style="width:100%;"  alt="{{driverCircuitInfo.Constructor.constructorId}}">
+            <img src="assets/images/constructor/{{driverCircuitInfo.Constructor.constructorId}}.png" style="width:100%;"
+              alt="{{driverCircuitInfo.Constructor.constructorId}}">
           </div>
           <div col-md-6>
             <table class="table">
@@ -176,71 +169,56 @@
                 <th scope="col"> {{driverCircuitInfo.Constructor.nationality}}</th>
               </tr>
             </table>
-            </div>
+          </div>
         </div>
         <div style="text-align:center;" class="row">
           <table *ngIf="driverInformatione" style="margin-top: 2%;text-align:center;" class="table">
             <tr>
 
-                <th scope="col">Name</th>
-                <th scope="col">{{driverInformatione.driverId}}</th>
-                </tr>
-                <tr>
-                  <th scope="col">Family Name</th>
-                  <th>{{driverInformatione.familyName}}</th>
-                </tr>
-                <tr>
-                  <th scope="col">First Name</th>
-                  <th >{{driverInformatione.givenName}}</th>
-              </tr>
-              <tr>
-                <th scope="col">Date of Birth</th>
-                <th scope="col">{{driverInformatione.dateOfBirth}}</th>
-                </tr>
-                <tr>
-                <th scope="col">Nationality </th>
-                <th scope="col">{{driverInformatione.nationality}}</th>
-              </tr>
-            
-        </table>
+              <th scope="col">Name</th>
+              <th scope="col">{{driverInformatione.driverId}}</th>
+            </tr>
+            <tr>
+              <th scope="col">Family Name</th>
+              <th>{{driverInformatione.familyName}}</th>
+            </tr>
+            <tr>
+              <th scope="col">First Name</th>
+              <th>{{driverInformatione.givenName}}</th>
+            </tr>
+            <tr>
+              <th scope="col">Date of Birth</th>
+              <th scope="col">{{driverInformatione.dateOfBirth}}</th>
+            </tr>
+            <tr>
+              <th scope="col">Nationality </th>
+              <th scope="col">{{driverInformatione.nationality}}</th>
+            </tr>
+
+          </table>
         </div>
       </div>
     </div>
   </div>
-  <!-- <table *ngIf="driverInformatione" style="margin-top: 2%;text-align:center;" class="table">
+
+  <table *ngIf="driverInformatione" style="margin-top: 2%;text-align:center;" class="table">
     <tr>
-        <th scope="col">Date of Birth</th>
-        <th scope="col">Name</th>
-        <th scope="col">Family Name</th>
-        <th scope="col">First Name</th>
-        <th scope="col">Nationality </th>
-        <th scope="col"></th>
-      </tr>
-      <tr >
-        <th scope="row">{{driverInformatione.dateOfBirth}}</th>
-        <td>{{driverInformatione.driverId}}</td>
-        <td>{{driverInformatione.familyName}}</td>
-        <td >{{driverInformatione.givenName}}</td>
-        <td >{{driverInformatione.nationality}}</td>
-</table> -->
-<table *ngIf="driverInformatione" style="margin-top: 2%;text-align:center;" class="table">
+      <th scope="col">position</th>
+      <th scope="col">points</th>
+      <th scope="col">grid </th>
+      <th scope="col">laps </th>
+      <th scope="col">status </th>
+      <th scope="col">time</th>
+      <th scope="col">FastestLap</th>
+    </tr>
     <tr>
-        <th scope="col">position</th>
-        <th scope="col">points</th>
-        <th scope="col">grid </th>
-        <th scope="col">laps </th>
-        <th scope="col">status </th>
-        <th scope="col">time</th>
-        <th scope="col">FastestLap</th>
-      </tr>
-      <tr >
-        <th scope="row">{{driverCircuitInfo.position}}</th>
-        <td>{{driverCircuitInfo.points}}</td>
-        <td>{{driverCircuitInfo.grid}}</td>
-        <td >{{driverCircuitInfo.laps}}</td>
-        <td >{{driverCircuitInfo.status}}</td>
-        <td *ngIf="driverCircuitInfo.status == 'Finished'">{{driverCircuitInfo.Time.time}}</td>
-        <td *ngIf="driverCircuitInfo.status == 'Finished'">{{driverCircuitInfo.FastestLap.Time.time}}</td>
-        <td *ngIf="driverCircuitInfo.status != 'Finished'">{{driverCircuitInfo.status}}</td>
-        <td *ngIf="driverCircuitInfo.status != 'Finished'">{{driverCircuitInfo.status}}</td>
-</table>
+      <th scope="row">{{driverCircuitInfo.position}}</th>
+      <td>{{driverCircuitInfo.points}}</td>
+      <td>{{driverCircuitInfo.grid}}</td>
+      <td>{{driverCircuitInfo.laps}}</td>
+      <td>{{driverCircuitInfo.status}}</td>
+      <td *ngIf="driverCircuitInfo.status == 'Finished'">{{driverCircuitInfo.Time.time}}</td>
+      <td *ngIf="driverCircuitInfo.status == 'Finished'">{{driverCircuitInfo.FastestLap.Time.time}}</td>
+      <td *ngIf="driverCircuitInfo.status != 'Finished'">{{driverCircuitInfo.status}}</td>
+      <td *ngIf="driverCircuitInfo.status != 'Finished'">{{driverCircuitInfo.status}}</td>
+  </table>
